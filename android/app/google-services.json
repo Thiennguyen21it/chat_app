@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "842658012379",
+    "project_id": "tmessapp",
+    "storage_bucket": "tmessapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842658012379:android:df8a561c252c72455d80fe",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842658012379-1vteec5gbmij500hhmcie8pctndt9a4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chat_app",
+            "certificate_hash": "b936b4c417de5f6eedb5f6ace20756e2f0a048e1"
+          }
+        },
+        {
+          "client_id": "842658012379-11diammc9gqp4jpvhu9oith9spdugaus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw9jg2rVyga2yQPicgLEaO4-doBn91Uq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842658012379-11diammc9gqp4jpvhu9oith9spdugaus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

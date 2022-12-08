@@ -275,7 +275,7 @@ class SettingsPageStateState extends State<SettingsPageState> {
 
                   // About me
                   Container(
-                    margin: EdgeInsets.only(left: 10, top: 30, bottom: 5),
+                    margin: const EdgeInsets.only(left: 10, top: 30, bottom: 5),
                     child: const Text(
                       'About me',
                       style: TextStyle(
@@ -329,7 +329,8 @@ class SettingsPageStateState extends State<SettingsPageState> {
         ),
 
         // Loading
-        Positioned(child: isLoading ? LoadingView() : const SizedBox.shrink()),
+        Positioned(
+            child: isLoading ? const LoadingView() : const SizedBox.shrink()),
       ],
     );
   }

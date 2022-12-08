@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ import '../widgets/widgets.dart';
 import 'pages.dart';
 
 class ChatPage extends StatefulWidget {
-  ChatPage({Key? key, required this.arguments}) : super(key: key);
+  const ChatPage({Key? key, required this.arguments}) : super(key: key);
 
   final ChatPageArguments arguments;
 
@@ -32,7 +33,7 @@ class ChatPageState extends State<ChatPage> {
 
   List<QueryDocumentSnapshot> listMessage = [];
   int _limit = 20;
-  int _limitIncrement = 20;
+  final int _limitIncrement = 20;
   String groupChatId = "";
 
   File? imageFile;
@@ -84,7 +85,7 @@ class ChatPageState extends State<ChatPage> {
       currentUserId = authProvider.getUserFirebaseId()!;
     } else {
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
         (Route<dynamic> route) => false,
       );
     }
@@ -204,7 +205,8 @@ class ChatPageState extends State<ChatPage> {
                               padding: MaterialStateProperty.all<EdgeInsets>(
                                   const EdgeInsets.all(0))),
                           child: Material(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
                             clipBehavior: Clip.hardEdge,
                             child: Image.network(
                               messageChat.content,
@@ -499,7 +501,7 @@ class ChatPageState extends State<ChatPage> {
                   buildListMessage(),
 
                   // Sticker
-                  isShowSticker ? buildSticker() : SizedBox.shrink(),
+                  isShowSticker ? buildSticker() : const SizedBox.shrink(),
 
                   // Input content
                   buildInput(),
@@ -631,7 +633,7 @@ class ChatPageState extends State<ChatPage> {
 
   Widget buildLoading() {
     return Positioned(
-      child: isLoading ? LoadingView() : SizedBox.shrink(),
+      child: isLoading ? const LoadingView() : const SizedBox.shrink(),
     );
   }
 
@@ -716,7 +718,7 @@ class ChatPageState extends State<ChatPage> {
                   listMessage = snapshot.data!.docs;
                   if (listMessage.isNotEmpty) {
                     return ListView.builder(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       itemBuilder: (context, index) =>
                           buildItem(index, snapshot.data?.docs[index]),
                       itemCount: snapshot.data?.docs.length,

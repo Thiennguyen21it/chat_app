@@ -64,7 +64,7 @@ class HomePageState extends State<HomePage> {
       currentUserId = authProvider.getUserFirebaseId()!;
     } else {
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
         (Route<dynamic> route) => false,
       );
     }
@@ -83,6 +83,7 @@ class HomePageState extends State<HomePage> {
     firebaseMessaging.requestPermission();
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      // ignore: avoid_print
       print('onMessage: $message');
       if (message.notification != null) {
         showNotification(message.notification!);
@@ -91,6 +92,7 @@ class HomePageState extends State<HomePage> {
     });
 
     firebaseMessaging.getToken().then((token) {
+      // ignore: avoid_print
       print('push token: $token');
       if (token != null) {
         homeProvider.updateDataFirestore(FirestoreConstants.pathUserCollection,
@@ -123,8 +125,8 @@ class HomePageState extends State<HomePage> {
     if (choice.title == 'Log out') {
       handleSignOut();
     } else {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => SettingsPage()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const SettingsPage()));
     }
   }
 
@@ -145,6 +147,7 @@ class HomePageState extends State<HomePage> {
       android: androidPlatformChannelSpecifics,
     );
 
+    // ignore: avoid_print
     print(remoteNotification);
 
     await flutterLocalNotificationsPlugin.show(
@@ -173,12 +176,12 @@ class HomePageState extends State<HomePage> {
             children: <Widget>[
               Container(
                 color: ColorConstants.themeColor,
-                padding: EdgeInsets.only(bottom: 10, top: 10),
+                padding: const EdgeInsets.only(bottom: 10, top: 10),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       child: const Icon(
                         Icons.exit_to_app,
                         size: 30,
@@ -206,7 +209,7 @@ class HomePageState extends State<HomePage> {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(right: 10),
+                      margin: const EdgeInsets.only(right: 10),
                       child: const Icon(
                         Icons.cancel,
                         color: ColorConstants.primaryColor,
@@ -228,7 +231,7 @@ class HomePageState extends State<HomePage> {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(right: 10),
+                      margin: const EdgeInsets.only(right: 10),
                       child: const Icon(
                         Icons.check_circle,
                         color: ColorConstants.primaryColor,
@@ -256,7 +259,7 @@ class HomePageState extends State<HomePage> {
   Future<void> handleSignOut() async {
     authProvider.handleSignOut();
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => LoginPage()),
+      MaterialPageRoute(builder: (context) => const LoginPage()),
       (Route<dynamic> route) => false,
     );
   }
@@ -292,7 +295,7 @@ class HomePageState extends State<HomePage> {
                         if (snapshot.hasData) {
                           if ((snapshot.data?.docs.length ?? 0) > 0) {
                             return ListView.builder(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               itemBuilder: (context, index) => buildItem(
                                   context, snapshot.data?.docs[index]),
                               itemCount: snapshot.data?.docs.length,
@@ -318,7 +321,8 @@ class HomePageState extends State<HomePage> {
 
               // Loading
               Positioned(
-                child: isLoading ? LoadingView() : SizedBox.shrink(),
+                child:
+                    isLoading ? const LoadingView() : const SizedBox.shrink(),
               )
             ],
           ),

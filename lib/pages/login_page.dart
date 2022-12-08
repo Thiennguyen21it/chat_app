@@ -83,7 +83,7 @@ class LoginPageState extends State<LoginPage> {
             // Loading
             Positioned(
               child: authProvider.status == Status.authenticating
-                  ? LoadingView()
+                  ? const LoadingView()
                   : const SizedBox.shrink(),
             ),
           ],
